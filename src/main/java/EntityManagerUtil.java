@@ -7,19 +7,19 @@ public class EntityManagerUtil {
 
     static {
         try {
-             } catch (Throwable ex) {
+            entityManagerFactory = Persistence.createEntityManagerFactory("demo");
+        } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
 
     public static EntityManager getEntityManager() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("demo");
         return entityManagerFactory.createEntityManager();
 
     }
 
-    public static void close(){
+    public static void close() {
         entityManagerFactory.close();
     }
 }
